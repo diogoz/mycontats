@@ -4,6 +4,8 @@ class ContactController {
   async index(request, response) {
     // listar todos os registros
     const contacts = await ContactRepository.findAll();
+    // retornando a propriedade do middleware
+    response.send(request.appId);
     response.json(contacts);
   }
 
