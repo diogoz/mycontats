@@ -49,9 +49,10 @@ class CategoryController {
     }
 
     const categoryByName = await CategoryRepository.findByName(name);
-    if (categoryByName && categoryByName.name !== name) {
+    if (categoryByName && categoryByName.id !== id) {
       return response.status(400).json({ error: 'This category name is already in use' });
     }
+
     const category = await CategoryRepository.update(id, {
       name
     });
